@@ -1,7 +1,6 @@
 <template>
   <!-- Hellowolrd.vue는 채팅페이지 전반을 담은 단일파일컴포넌트 -->
   <!-- 아래는 컴포넌트 템플릿 -->
-  <html lang="ko-KR">
   <v-container class="grey lighten-3" no-gutters>
     <!-- 아래 한 줄은 input 창 눌러도 확대되지 않도록 페이지 고정하는 역할 -->
     <meta
