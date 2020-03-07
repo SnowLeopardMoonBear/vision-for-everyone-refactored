@@ -1,35 +1,25 @@
 <template>
+  <!-- 최상위 Vue 컴포넌트. 앱 상단의 앱바 역할을 하며, 아래에는 채팅페이지룰 단일파일컴포넌트로 불러옴 -->
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer></v-spacer>
-
+    <v-app-bar app color="green lighten-1" dark>
       <v-btn
+        text
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
         target="_blank"
-        text
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <span class="mr-2 body-1">홈으로</span>
+      </v-btn>
+      <v-toolbar-title>
+        <span class="font-weight-bold headline"></span>
+        <span class="font-weight-light headline"></span>
+      </v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn
+        text
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+      >
+        <span class="mr-2 body-1">마이페이지</span>
       </v-btn>
     </v-app-bar>
 
@@ -44,13 +34,9 @@ import HelloWorld from "./components/HelloWorld";
 
 export default {
   name: "App",
-
   components: {
     HelloWorld
   },
-
-  data: () => ({
-    //
-  })
+  data: () => ({})
 };
 </script>
