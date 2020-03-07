@@ -2,7 +2,7 @@
 
 const express = require('express');
 const path = require('path');
-const PORT = process.env.PORT || 3000 // 포트 번호 지정. 환경변수에 지정된 값이 없으면 3000번 할당.
+const PORT = process.env.PORT || 3001 // 포트 번호 지정. 환경변수에 지정된 값이 없으면 3000번 할당.
 console.log(PORT);
 
 //http 모듈로 서버를 개설하고, 요청을 받아들이고 응답하는 메커니즘으로 express 모듈을 넣어줍니다.
