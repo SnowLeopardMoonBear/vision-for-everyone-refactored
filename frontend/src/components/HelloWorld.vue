@@ -84,6 +84,7 @@
               height="30px"
               :elevation="5"
               width="100%"
+              @click="prepareCall"
             >
               직원호출
             </v-btn>
@@ -109,7 +110,7 @@
       width="100%"
       dark
       @click="changeFs"
-    > 글자크기 변경 </v-btn>
+    > {{changeTextString}} </v-btn>
   </v-container>
 </template>
 
@@ -136,6 +137,7 @@ export default {
   components: { BasicVueChat },
   data: () => {
     return {
+      changeTextString: '글자크기 작게 변경',
       chatStyle: `font-size: 150%`,
       isBig: true,
       clientId: generatedId,
@@ -183,15 +185,21 @@ export default {
       };
       this.$socket.emit("send chat", msg); // "send chat" 이벤트에 msg 이름으로 메시지 스트링 보냄.
     },
+
     changeFs() {
       if (this.isBig === true){
         this.chatStyle = 'font-size: 100%;';
+        this.changeTextString = '글자크기 크게 변경';
         this.isBig = false;
       } else{
         this.chatStyle = 'font-size: 150%;';
+        this.changeTextString = '글자크기 작게 변경';
         this.isBig = true;
       }
-      
+    },
+
+    prepareCall() {
+      window.alert('직원호출 기능은 추후 점주와 협의하여 제공할 계획입니다.')
     }
   }
 };
