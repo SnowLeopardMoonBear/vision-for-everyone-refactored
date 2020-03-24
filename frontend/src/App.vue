@@ -1,12 +1,8 @@
 <template>
-<!-- 최상위 Vue 컴포넌트 -->
+  <!-- 최상위 Vue 컴포넌트 -->
   <v-app>
     <div>
-      <v-dialog
-        v-model="dialog"
-        width="500"
-        height="700" 
-        >
+      <v-dialog v-model="dialog" width="500" height="700">
         <v-card>
           <v-card-title
             class="headline grey lighten-2"
@@ -18,27 +14,44 @@
 
           <v-card-text style="font-size:120%" alt="키위 소개 내용 문단">
             <h3>키위 간단 시작 가이드</h3>
-<ul>1. 함께하는 키오스크 키위는, 버튼 세 개 아래에 채팅창이 있어요. </ul>
-<ul>2. 버튼을 눌러 메뉴와 이벤트를 확인하거나 직원을 호출할 수 있어요</ul> 
-<ul>3. 채팅창에서는 카톡처럼 대화하며 어디서 뭘 먹을지 고르고 결제까지 할 수 있답니다.</ul>
-<ul>4. 주문을 도와주는 인공지능, 키위봇과 대화를 시작해요. 텍스트입력 창에 안녕, 또는 ㅎㅇ처럼 초성을 입력해주세요.</ul>
-<ul>5. 키위봇이 대답하면 원하는 식당을 알려주세요. 테스트할 식당으로 애기능 또는 ㅇㄱㄴ을 입력합니다.</ul>
-<ul>6. 키위봇이 주문할 메뉴의 이름과 수량을 입력해주세요. 짜장면 3 혹은 ㅉㅈㅁ3 처럼요.</ul>
-<ul>7. 카카오페이, 삼성페이, 토스 등 결제방법을 선택해주세요. 예를 들면 삼성페이, ㅋㅋㅇ와 같이요.</ul>
-<ul>8. 웹훅으로 결제모듈 연결이란 메시지가 나오면 대화가 끝나요. 앞으로 결제 사이트와 식당에 연결하는 부분을 넣을 거예요. 대화를 처음부터 다시 시작하시려면 안녕 또는 ㅎㅇ라고 입력해주세요.</ul>
-
+            <ul>
+              1. 함께하는 키오스크 키위는, 버튼 세 개 아래에 채팅창이 있어요.
+            </ul>
+            <ul>
+              2. 버튼을 눌러 메뉴와 이벤트를 확인하거나 직원을 호출할 수 있어요
+            </ul>
+            <ul>
+              3. 채팅창에서는 카톡처럼 대화하며 어디서 뭘 먹을지 고르고 결제까지
+              할 수 있답니다.
+            </ul>
+            <ul>
+              4. 주문을 도와주는 인공지능, 키위봇과 대화를 시작해요. 텍스트입력
+              창에 안녕, 또는 ㅎㅇ처럼 초성을 입력해주세요.
+            </ul>
+            <ul>
+              5. 키위봇이 대답하면 원하는 식당을 알려주세요. 테스트할 식당으로
+              애기능 또는 ㅇㄱㄴ을 입력합니다.
+            </ul>
+            <ul>
+              6. 키위봇이 주문할 메뉴의 이름과 수량을 입력해주세요. 짜장면 3
+              혹은 ㅉㅈㅁ3 처럼요.
+            </ul>
+            <ul>
+              7. 카카오페이, 삼성페이, 토스 등 결제방법을 선택해주세요. 예를
+              들면 삼성페이, ㅋㅋㅇ와 같이요.
+            </ul>
+            <ul>
+              8. 웹훅으로 결제모듈 연결이란 메시지가 나오면 대화가 끝나요.
+              앞으로 결제 사이트와 식당에 연결하는 부분을 넣을 거예요. 대화를
+              처음부터 다시 시작하시려면 안녕 또는 ㅎㅇ라고 입력해주세요.
+            </ul>
           </v-card-text>
 
           <v-divider></v-divider>
 
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn
-              color="primary"
-              text
-              @click="Change()"
-              alt="베타테스트 버튼"
-            >
+            <v-btn color="primary" text @click="Change()" alt="베타테스트 버튼">
               테스트하러 가기
             </v-btn>
           </v-card-actions>
@@ -70,23 +83,23 @@
       </v-app-bar>
 
       <v-content>
-        <HelloWorld/>
+        <HelloWorld />
       </v-content>
     </div>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import HelloWorld from "./components/HelloWorld";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld,
+    HelloWorld
   },
   data: () => ({
     dialog: true,
-    forVoiceover: true,
+    forVoiceover: true
   }),
   methods: {
     Change() {

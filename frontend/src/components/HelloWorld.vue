@@ -97,11 +97,21 @@
     <!-- 이하는 npm에서 내려받은 basic-vue-chat 모듈. 
     모듈의 편의성이 아쉽고 버그가 있어, 추후 이 모듈을 수정해 github에 올린 뒤 거기서 불러오는 방식으로 바꿀 계획-->
     <BasicVueChat
+      v-bind:style="chatStyle"
       :title="'아래는 키위 채팅창입니다'"
       @newOwnMessage="dfCom"
       :new-message="message"
       :initial-feed="feed"
     />
+    <v-btn
+      class="title font-weight-bold"
+      color="red lighten-1"
+      height="30px"
+      :elevation="5"
+      width="100%"
+      dark
+      @click="changeFs"
+    > 글자크기 변경 </v-btn>
   </v-container>
 </template>
 
@@ -114,6 +124,9 @@
 $primary: #00cc33;
 $secondary: #663322;
 $window-height: 50%;
+
+@import "../../node_modules/basic-vue-chat/src/assets/scss/main.scss";
+
 // (버그) run serve 한 뒤에 import를 주석달았다 해제하면 스타일 반영됨. 브라우저상에서 새로고침하면 또 안됨 ㄷ
 // 게다가 오버라이드 반영될 땐 오가는 채팅이 늘수록 계속 창 길이 늘어남.
 </style>
@@ -125,6 +138,8 @@ export default {
   components: { BasicVueChat },
   data: () => {
     return {
+      chatStyle: `font-size: 30px`,
+      isBig: true,
       clientId: generatedId,
       dialog: false, //메뉴팝업창 여부 결정 플래그. True가 될 시 팝업 나타남.
       dialog2: false, //이벤트팝업창 여부 결정 플래그
@@ -169,6 +184,16 @@ export default {
         clientId: this.clientId
       };
       this.$socket.emit("send chat", msg); // "send chat" 이벤트에 msg 이름으로 메시지 스트링 보냄.
+    },
+    changeFs() {
+      if (this.isBig === true){
+        this.chatStyle = 'font-size: 15px;';
+        this.isBig = false;
+      } else{
+        this.chatStyle = 'font-size: 30px;';
+        this.isBig = true;
+      }
+      
     }
   }
 };
