@@ -30,10 +30,8 @@
               </template>
               <!-- 메뉴팝업 안에 들어가는 내용 -->
               <v-card>
-                <v-card-title class="headline grey lighten-2" primary-title
-                  >메뉴</v-card-title
-                >
-                <v-card-text>{{ menu }}</v-card-text>
+                <v-card-title>메뉴</v-card-title>
+                <v-card-text style="font-size:20px;">{{ menu }}</v-card-text>
 
                 <v-divider></v-divider>
 
@@ -138,7 +136,7 @@ export default {
   components: { BasicVueChat },
   data: () => {
     return {
-      chatStyle: `font-size: 30px`,
+      chatStyle: `font-size: 150%`,
       isBig: true,
       clientId: generatedId,
       dialog: false, //메뉴팝업창 여부 결정 플래그. True가 될 시 팝업 나타남.
@@ -187,10 +185,10 @@ export default {
     },
     changeFs() {
       if (this.isBig === true){
-        this.chatStyle = 'font-size: 15px;';
+        this.chatStyle = 'font-size: 100%;';
         this.isBig = false;
       } else{
-        this.chatStyle = 'font-size: 30px;';
+        this.chatStyle = 'font-size: 150%;';
         this.isBig = true;
       }
       
