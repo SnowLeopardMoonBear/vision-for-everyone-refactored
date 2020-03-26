@@ -1,16 +1,15 @@
 <template>
   <!-- Hellowolrd.vue는 채팅페이지 전반을 담은 단일파일컴포넌트 -->
   <!-- 아래는 컴포넌트 템플릿 -->
-  <v-container class="grey lighten-3" no-gutters>
+  <v-container class="grey lighten-3">
     <!-- 아래 한 줄은 input 창 눌러도 확대되지 않도록 페이지 고정하는 역할 -->
     <meta
       name="viewport"
-      content="initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no;"
+      content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
     />
     <v-layout text-center wrap>
-      <v-flex xs12> </v-flex>
       <div style="height:3px"></div>
-      <v-container class="grey lighten-3">
+      <v-container no-gutters class="grey lighten-3">
         <v-row no-gutters>
           <!-- 여기서부터 메뉴버튼 -->
           <v-col>
@@ -102,15 +101,32 @@
       :new-message="message"
       :initial-feed="feed"
     />
-    <v-btn
-      class="title font-weight-bold"
-      color="red lighten-1"
-      height="30px"
-      :elevation="5"
-      width="100%"
-      dark
-      @click="changeFs"
-    > {{changeTextString}} </v-btn>
+    <v-container style="z-index: -2" no-gutters class="grey lighten-3">
+      <v-row no-gutters>
+        <v-col>
+          <v-btn
+            class="title font-weight-bold"
+            color="red lighten-3"
+            height="30px"
+            :elevation="5"
+            width="100%"
+            dark
+            @click="fontSmaller"
+          > 글자 줄이기 </v-btn>
+        </v-col>
+        <v-col>
+          <v-btn
+            class="title font-weight-bold"
+            color="red lighten-1"
+            height="30px"
+            :elevation="5"
+            width="100%"
+            dark
+            @click="fontBigger"
+          > 글자 키우기 </v-btn>
+        </v-col>
+      </v-row>
+    </v-container>  
   </v-container>
 </template>
 
@@ -137,8 +153,8 @@ export default {
   components: { BasicVueChat },
   data: () => {
     return {
-      changeTextString: '글자크기 작게 변경',
-      chatStyle: `font-size: 150%`,
+      chatStyle: "font-size: 150%;",
+      fontSize: 150,
       isBig: true,
       clientId: generatedId,
       dialog: false, //메뉴팝업창 여부 결정 플래그. True가 될 시 팝업 나타남.
@@ -184,6 +200,20 @@ export default {
         clientId: this.clientId
       };
       this.$socket.emit("send chat", msg); // "send chat" 이벤트에 msg 이름으로 메시지 스트링 보냄.
+    },
+
+    fontBigger() {
+      if (this.fontSize < 200){
+        this.fontSize += 25;
+        this.chatStyle = `font-size: ${this.fontSize}%`
+      }
+    },
+
+    fontSmaller() {
+      if (this.fontSize > 100){
+        this.fontSize -= 25;
+        this.chatStyle = `font-size: ${this.fontSize}%`
+      }
     },
 
     changeFs() {
