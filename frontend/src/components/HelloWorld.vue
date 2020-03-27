@@ -112,7 +112,9 @@
             width="100%"
             dark
             @click="fontSmaller"
-          > 글자 줄이기 </v-btn>
+          >
+            글자 줄이기
+          </v-btn>
         </v-col>
         <v-col>
           <v-btn
@@ -123,10 +125,12 @@
             width="100%"
             dark
             @click="fontBigger"
-          > 글자 키우기 </v-btn>
+          >
+            글자 키우기
+          </v-btn>
         </v-col>
       </v-row>
-    </v-container>  
+    </v-container>
   </v-container>
 </template>
 
@@ -140,7 +144,7 @@ $primary: #00cc33;
 $secondary: #663322;
 $window-width: 100%;
 
-@import "../../node_modules/basic-vue-chat/src/assets/scss/main.scss";
+@import "~basic-vue-chat/src/assets/scss/main.scss";
 
 // (버그) run serve 한 뒤에 import를 주석달았다 해제하면 스타일 반영됨. 브라우저상에서 새로고침하면 또 안됨 ㄷ
 // 게다가 오버라이드 반영될 땐 오가는 채팅이 늘수록 계속 창 길이 늘어남.
@@ -184,6 +188,7 @@ export default {
         contents: data,
         date: "" //date에 빈 스트링을 넣은 이유는, 불필요한 구성요소 제거하여 voiceover사용시 스와이프 횟수 줄이기 위함
       });
+      this.playChime();
       // 메시지 회신시 알림벨, 작동하지 않음(버그)
       // var chime = new Audio();
       // chime.src = "./chime.mp3";
@@ -204,33 +209,33 @@ export default {
     },
 
     fontBigger() {
-      if (this.fontSize < 200){
+      if (this.fontSize < 200) {
         this.fontSize += 25;
-        this.chatStyle = `font-size: ${this.fontSize}%`
+        this.chatStyle = `font-size: ${this.fontSize}%`;
       }
     },
 
     fontSmaller() {
-      if (this.fontSize > 100){
+      if (this.fontSize > 100) {
         this.fontSize -= 25;
-        this.chatStyle = `font-size: ${this.fontSize}%`
+        this.chatStyle = `font-size: ${this.fontSize}%`;
       }
     },
 
     changeFs() {
-      if (this.isBig === true){
-        this.chatStyle = 'font-size: 100%;';
-        this.changeTextString = '글자크기 크게 변경';
+      if (this.isBig === true) {
+        this.chatStyle = "font-size: 100%;";
+        this.changeTextString = "글자크기 크게 변경";
         this.isBig = false;
-      } else{
-        this.chatStyle = 'font-size: 150%;';
-        this.changeTextString = '글자크기 작게 변경';
+      } else {
+        this.chatStyle = "font-size: 150%;";
+        this.changeTextString = "글자크기 작게 변경";
         this.isBig = true;
       }
     },
 
     prepareCall() {
-      window.alert('직원호출 기능은 추후 점주와 협의하여 제공할 계획입니다.')
+      window.alert("직원호출 기능은 추후 점주와 협의하여 제공할 계획입니다.");
     },
 
     // chime() {
@@ -239,6 +244,11 @@ export default {
     //   chime.volume = 100;
     //   this.chime.play();
     // }
+    playChime() {
+      var audio = new Audio();
+      audio.src = '../../public/chime.mp3';
+      audio.play();
+    }
   }
 };
 </script>
