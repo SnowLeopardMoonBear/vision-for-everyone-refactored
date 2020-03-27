@@ -138,7 +138,7 @@
 // scss로 채팅모듈의 색상값을 변경했으나 오류 있음
 $primary: #00cc33;
 $secondary: #663322;
-$window-height: 50%;
+$window-width: 100%;
 
 @import "../../node_modules/basic-vue-chat/src/assets/scss/main.scss";
 
