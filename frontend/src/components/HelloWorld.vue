@@ -10,8 +10,8 @@
     <v-layout text-center wrap>
       <div style="height:3px"></div>
       <v-container no-gutters class="grey lighten-3">
+        <!-- 여기서부터 메뉴버튼 -->
         <v-row no-gutters>
-          <!-- 여기서부터 메뉴버튼 -->
           <v-col>
             <v-dialog v-model="dialog" width="500">
               <template v-slot:activator="{ on }">
