@@ -1,7 +1,7 @@
 <template>
   <!-- Hellowolrd.vue는 채팅페이지 전반을 담은 단일파일컴포넌트 -->
   <!-- 아래는 컴포넌트 템플릿 -->
-  <v-container class="grey lighten-3">
+  <v-container no-gutters class="grey lighten-3">
     <!-- 아래 한 줄은 input 창 눌러도 확대되지 않도록 페이지 고정하는 역할 -->
     <meta
       name="viewport"
@@ -188,7 +188,7 @@ export default {
       // var chime = new Audio();
       // chime.src = "./chime.mp3";
       // chime.volume = 100;
-      // chime.play();
+      // this.chime.play();
     });
   },
 
@@ -200,6 +200,7 @@ export default {
         clientId: this.clientId
       };
       this.$socket.emit("send chat", msg); // "send chat" 이벤트에 msg 이름으로 메시지 스트링 보냄.
+      // this.chime();
     },
 
     fontBigger() {
@@ -230,7 +231,14 @@ export default {
 
     prepareCall() {
       window.alert('직원호출 기능은 추후 점주와 협의하여 제공할 계획입니다.')
-    }
+    },
+
+    // chime() {
+    //   var chime = new Audio();
+    //   chime.src = "./chime.mp3";
+    //   chime.volume = 100;
+    //   this.chime.play();
+    // }
   }
 };
 </script>
