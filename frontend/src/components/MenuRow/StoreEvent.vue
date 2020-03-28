@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialog2" width="500">
+  <v-dialog v-model="isEventOn" width="500">
     <template v-slot:activator="{ on }">
       <v-btn
         class="title font-weight-bold"
@@ -20,7 +20,7 @@
       <v-divider></v-divider>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" text @click="dialog2 = false">
+        <v-btn color="primary" text @click="isEventOn = false">
           닫기
         </v-btn>
       </v-card-actions>
@@ -29,5 +29,12 @@
 </template>
 <style lang="scss"></style>
 <script>
-export default {};
+export default {
+  data: () => {
+    return{
+      isEventOn: false
+    }
+  },
+  methods:{}
+};
 </script>
