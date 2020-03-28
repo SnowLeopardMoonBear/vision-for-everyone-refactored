@@ -10,86 +10,7 @@
     <v-layout text-center wrap>
       <div style="height:3px"></div>
       <v-container no-gutters class="grey lighten-3">
-        <!-- 여기서부터 메뉴버튼 -->
-        <v-row no-gutters>
-          <v-col>
-            <v-dialog v-model="dialog" width="500">
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  class="title font-weight-bold"
-                  color="green lighten-1"
-                  height="30px"
-                  :elevation="5"
-                  width="100%"
-                  dark
-                  v-on="on"
-                >
-                  메뉴
-                </v-btn>
-              </template>
-              <!-- 메뉴팝업 안에 들어가는 내용 -->
-              <v-card>
-                <v-card-title>메뉴</v-card-title>
-                <v-card-text style="font-size:20px;">{{ menu }}</v-card-text>
-
-                <v-divider></v-divider>
-
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="primary" text @click="dialog = false">
-                    닫기
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-          </v-col>
-          <!-- 메뉴팝업끝 -->
-          <!-- 여기서부터 이벤트메뉴-->
-          <v-col>
-            <v-dialog v-model="dialog2" width="500">
-              <template v-slot:activator="{ on }">
-                <v-btn
-                  class="title font-weight-bold"
-                  color="green lighten-1"
-                  height="30px"
-                  :elevation="5"
-                  width="100%"
-                  dark
-                  v-on="on"
-                >
-                  이벤트
-                </v-btn>
-              </template>
-              <!-- 이벤트 팝업 안에 들어가는 내용 -->
-              <v-card>
-                <v-card-title>신년맞이 이벤트!</v-card-title>
-                <v-card-text style="font-size:20px;">{{ event }}</v-card-text>
-                <v-divider></v-divider>
-                <v-card-actions>
-                  <v-spacer></v-spacer>
-                  <v-btn color="primary" text @click="dialog2 = false">
-                    닫기
-                  </v-btn>
-                </v-card-actions>
-              </v-card>
-            </v-dialog>
-          </v-col>
-          <!-- 이벤트 팝업 끝 -->
-          <!-- 직원호출버튼 -->
-          <v-col>
-            <v-btn
-              class="title font-weight-bold"
-              color="red lighten-4"
-              height="30px"
-              :elevation="5"
-              width="100%"
-              @click="prepareCall"
-            >
-              직원호출
-            </v-btn>
-          </v-col>
-          <!-- 직원호출버튼 끝 -->
-        </v-row>
+        <menu-row/> <!-- row with menu, store event, call staff buttons -->
       </v-container>
     </v-layout>
     <!-- 이하는 npm에서 내려받은 basic-vue-chat 모듈. 
@@ -153,16 +74,14 @@ $window-width: 100%;
 <script>
 import BasicVueChat from "basic-vue-chat";
 import generatedId from "./ClientIdGenerator";
+import MenuRow from './MenuRow/MenuRow.vue';
 export default {
-  components: { BasicVueChat },
+  components: { BasicVueChat, MenuRow },
   data: () => {
     return {
       chatStyle: "font-size: 150%;",
       fontSize: 150,
-      isBig: true,
       clientId: generatedId,
-      dialog: false, //메뉴팝업창 여부 결정 플래그. True가 될 시 팝업 나타남.
-      dialog2: false, //이벤트팝업창 여부 결정 플래그
       // 채팅 모듈에 기본으로 뜨는 메시지. 여러 개도 가능.
       feed: [
         {
@@ -175,8 +94,6 @@ export default {
       ],
       // 채팅창에 띄워줄 DF의 응답메시지를 저장
       message: {},
-      menu: "짜장면: 사천원, 짬뽕: 오천원, 탕수육: 만원", // 메뉴팝업에 넣을 내용
-      event: "앗! 짜장면, 신발보다 싸다!" // 이벤트팝업에 넣을 내용
     };
   },
   // 뷰 인스턴스 마운트시 DF에서 우리측 서버로 온 메시지를 받는 소켓 이벤트 등록
@@ -234,16 +151,6 @@ export default {
       }
     },
 
-    prepareCall() {
-      window.alert("직원호출 기능은 추후 점주와 협의하여 제공할 계획입니다.");
-    },
-
-    // chime() {
-    //   var chime = new Audio();
-    //   chime.src = "./chime.mp3";
-    //   chime.volume = 100;
-    //   this.chime.play();
-    // }
     playChime() {
       var audio = new Audio();
       audio.src = '../../public/chime.mp3';

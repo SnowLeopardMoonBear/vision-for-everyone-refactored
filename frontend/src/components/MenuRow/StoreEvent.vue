@@ -32,7 +32,8 @@
 export default {
   data: () => {
     return{
-      isEventOn: false
+      isEventOn: false,
+      event: '앗! 짜장면, 신발보다 싸다!'
     }
   },
   methods:{}
