@@ -1,5 +1,6 @@
 // 클라이언트 사이드 엔트리 파일. 클라이언트-서버(우리측) 통신 접점이 등록됨
 import Vue from "vue"; // 뷰 모듈을 불러와 할당
+import { store } from "./store.js";
 import App from "./App.vue";
 import io from "socket.io-client";
 import vuetify from "./plugins/vuetify";
@@ -14,5 +15,6 @@ Vue.config.productionTip = false; // 프로덕션 설정
 // Vue 인스턴스를 export된 App.vue의 app에 마운트. 모든 Vue 컴포넌트의 뿌리가 되는 Vue 객체
 new Vue({
   vuetify,
+  store: store,
   render: h => h(App)
 }).$mount("#app");

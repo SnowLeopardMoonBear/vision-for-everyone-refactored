@@ -22,6 +22,7 @@
       :new-message="message"
       :initial-feed="feed"
     />
+    <font-size-row/> <!-- row with fontbigger, fontsmaller buttons -->
     <v-container style="z-index: -2" no-gutters class="grey lighten-3">
       <v-row no-gutters>
         <v-col>
@@ -75,8 +76,9 @@ $window-width: 100%;
 import BasicVueChat from "basic-vue-chat";
 import generatedId from "./ClientIdGenerator";
 import MenuRow from './MenuRow/MenuRow.vue';
+import FontSizeRow from './FontSizeRow/FontSizeRow.vue';
 export default {
-  components: { BasicVueChat, MenuRow },
+  components: { BasicVueChat, MenuRow, FontSizeRow },
   data: () => {
     return {
       chatStyle: "font-size: 150%;",
