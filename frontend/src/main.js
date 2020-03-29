@@ -1,7 +1,7 @@
 // 클라이언트 사이드 엔트리 파일. 클라이언트-서버(우리측) 통신 접점이 등록됨
 import Vue from "vue"; // 뷰 모듈을 불러와 할당
-import { store } from "./store.js";
 import App from "./App.vue";
+import { store } from "./store.js";
 import io from "socket.io-client";
 import vuetify from "./plugins/vuetify";
 

@@ -13,5 +13,11 @@
 </template>
 <style lang="scss"></style>
 <script>
-export default {};
+export default {
+  methods: {
+    fontbigger() {
+      return this.$store.commit("fontBigger", { percentage: 25 });
+    }
+  }
+};
 </script>

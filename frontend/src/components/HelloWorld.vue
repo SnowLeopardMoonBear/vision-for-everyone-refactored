@@ -23,36 +23,7 @@
       :initial-feed="feed"
     />
     <font-size-row/> <!-- row with fontbigger, fontsmaller buttons -->
-    <v-container style="z-index: -2" no-gutters class="grey lighten-3">
-      <v-row no-gutters>
-        <v-col>
-          <v-btn
-            class="title font-weight-bold"
-            color="red lighten-3"
-            height="30px"
-            :elevation="5"
-            width="100%"
-            dark
-            @click="fontSmaller"
-          >
-            글자 줄이기
-          </v-btn>
-        </v-col>
-        <v-col>
-          <v-btn
-            class="title font-weight-bold"
-            color="red lighten-1"
-            height="30px"
-            :elevation="5"
-            width="100%"
-            dark
-            @click="fontBigger"
-          >
-            글자 키우기
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-container>
+  <div> {{this.$store.state.fontSize}} </div>
   </v-container>
 </template>
 
@@ -81,7 +52,7 @@ export default {
   components: { BasicVueChat, MenuRow, FontSizeRow },
   data: () => {
     return {
-      chatStyle: "font-size: 150%;",
+      chatStyle: this.$store.getters.chatStyle,
       fontSize: 150,
       clientId: generatedId,
       // 채팅 모듈에 기본으로 뜨는 메시지. 여러 개도 가능.
@@ -138,18 +109,6 @@ export default {
       if (this.fontSize > 100) {
         this.fontSize -= 25;
         this.chatStyle = `font-size: ${this.fontSize}%`;
-      }
-    },
-
-    changeFs() {
-      if (this.isBig === true) {
-        this.chatStyle = "font-size: 100%;";
-        this.changeTextString = "글자크기 크게 변경";
-        this.isBig = false;
-      } else {
-        this.chatStyle = "font-size: 150%;";
-        this.changeTextString = "글자크기 작게 변경";
-        this.isBig = true;
       }
     },
 
