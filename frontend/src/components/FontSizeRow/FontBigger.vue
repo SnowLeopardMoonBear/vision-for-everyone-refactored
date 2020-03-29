@@ -15,7 +15,7 @@
 <script>
 export default {
   methods: {
-    fontbigger() {
+    fontBigger() {
       return this.$store.commit("fontBigger", { percentage: 25 });
     }
   }

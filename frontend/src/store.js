@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
     },
     fontSmaller: function(state, payload) {
       if (state.fontSize > 100) {
-        state.fontSize -= payload.percentage;
+        return (state.fontSize -= payload.percentage);
       }
     }
   }

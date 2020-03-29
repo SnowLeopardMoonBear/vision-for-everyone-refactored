@@ -23,7 +23,7 @@
       :initial-feed="feed"
     />
     <font-size-row/> <!-- row with fontbigger, fontsmaller buttons -->
-  <div> {{this.$store.state.fontSize}} </div>
+  <div> {{this.$store.state.fontSize}} {{this.$store.getters.chatStyle}}</div>
   </v-container>
 </template>
 
@@ -52,7 +52,6 @@ export default {
   components: { BasicVueChat, MenuRow, FontSizeRow },
   data: () => {
     return {
-      chatStyle: this.$store.getters.chatStyle,
       fontSize: 150,
       clientId: generatedId,
       // 채팅 모듈에 기본으로 뜨는 메시지. 여러 개도 가능.
@@ -68,6 +67,11 @@ export default {
       // 채팅창에 띄워줄 DF의 응답메시지를 저장
       message: {},
     };
+  },
+  computed: {
+    chatStyle () {
+      return this.$store.getters.chatStyle;
+    }
   },
   // 뷰 인스턴스 마운트시 DF에서 우리측 서버로 온 메시지를 받는 소켓 이벤트 등록
   mounted() {
@@ -96,20 +100,6 @@ export default {
       };
       this.$socket.emit("send chat", msg); // "send chat" 이벤트에 msg 이름으로 메시지 스트링 보냄.
       // this.chime();
-    },
-
-    fontBigger() {
-      if (this.fontSize < 200) {
-        this.fontSize += 25;
-        this.chatStyle = `font-size: ${this.fontSize}%`;
-      }
-    },
-
-    fontSmaller() {
-      if (this.fontSize > 100) {
-        this.fontSize -= 25;
-        this.chatStyle = `font-size: ${this.fontSize}%`;
-      }
     },
 
     playChime() {

@@ -17,7 +17,6 @@ import FontSmaller from "./FontSmaller";
 
 export default {
   components: { FontBigger, FontSmaller },
-  data: () => {},
   methods: {}
 };
 </script>
