@@ -72,11 +72,12 @@ export default {
         clientId: this.clientId
       };
       this.$socket.emit("send chat", msg);
+      this.playChime();
     },
     // Chime error...
     playChime() {
-      var audio = new Audio();
-      audio.src = '../../public/chime.mp3';
+      var audio = new Audio(require('../../../public/chime.mp3'));
+      // audio.src = '../../public/chime.mp3';
       audio.play();
     }
   }
