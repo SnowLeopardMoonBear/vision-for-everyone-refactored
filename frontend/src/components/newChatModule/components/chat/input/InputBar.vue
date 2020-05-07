@@ -15,8 +15,21 @@
 </template>
 
 <script>
-import { scrollToBottom } from './scroll.js';
+import { scrollToBottom } from "./scroll.js";
+import generatedId from "../../../../ClientIdGenerator.js";
 export default {
+  mounted() {
+    this.$socket.on("receive chat", (data) => {
+      var msgToStore = {
+        is_DF: true,
+        content: data,
+        time: this.getCurrentTime(),
+      };
+      this.$store.commit("pushMessage", msgToStore);
+      this.sendChime();
+      scrollToBottom();
+    });
+  },
   methods: {
     getCurrentTime() {
       var d = new Date();
@@ -26,17 +39,22 @@ export default {
       ${minutes > 9 ? `${minutes}` : `0${minutes}`}분`;
     },
     sendChime() {
-      var chime = new Audio(require('../../../../../../public/chime.mp3'));
+      var chime = new Audio(require("../../../../../../public/chime.mp3"));
       chime.play();
     },
     sendMessage() {
       if (this.inputText !== "") {
-        var msgToSend = {
+        var msgToStore = {
           is_DF: false,
           content: this.inputText,
           time: this.getCurrentTime(),
-        }
-        this.$store.commit("pushMessage", msgToSend);
+        };
+        var msgToSend = {
+          msgText: this.inputText,
+          clientId: this.clientId,
+        };
+        this.$socket.emit("send chat", msgToSend);
+        this.$store.commit("pushMessage", msgToStore);
         this.inputText = "";
         this.sendChime();
         scrollToBottom();
@@ -54,6 +72,7 @@ export default {
   data: () => {
     return {
       inputText: "",
+      clientId: generatedId,
     };
   },
 };
