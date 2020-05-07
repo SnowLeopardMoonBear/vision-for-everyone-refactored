@@ -12,7 +12,7 @@
     </v-layout>
     <!-- <chat-module /> -->
     <new-chat-module /> <!--new chat window-->
-    <font-size-row/> <!--fontbigger, fontsmaller buttons-->
+    <!-- <font-size-row/> fontbigger, fontsmaller buttons -->
   </v-container>
 </template>
 
@@ -20,8 +20,8 @@
 import MenuRow from './MenuRow/MenuRow.vue';
 // import ChatModule from './ChatModule/ChatModule.vue';
 import NewChatModule from './NewChatModule/App.vue';
-import FontSizeRow from './FontSizeRow/FontSizeRow.vue';
+// import FontSizeRow from './FontSizeRow/FontSizeRow.vue';
 export default {
-  components: { MenuRow, FontSizeRow, NewChatModule },
+  components: { MenuRow, NewChatModule },
 };
 </script>
