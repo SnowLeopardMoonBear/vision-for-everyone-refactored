@@ -1,5 +1,5 @@
 <template>
-  <v-container no-gutters class="grey lighten-3">
+  <v-container no-gutters class="red lighten-5">
     <meta
       name="viewport"
       content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"

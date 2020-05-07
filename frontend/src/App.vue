@@ -83,7 +83,7 @@
         </v-card>
       </v-dialog>
     </div>
-    <v-app-bar app color="green lighten-1" dark>
+    <v-app-bar app color="#8ff381" dark>
       <v-btn
         text
         href="https://github.com/vuetifyjs/vuetify/releases/latest"
