@@ -11,6 +11,7 @@
       </v-container>
     </v-layout>
     <chat-module /> <!--chat window-->
+    <new-chat-module /> <!--new chat window-->
     <font-size-row/> <!--fontbigger, fontsmaller buttons-->
   </v-container>
 </template>
@@ -18,8 +19,9 @@
 <script>
 import MenuRow from './MenuRow/MenuRow.vue';
 import ChatModule from './ChatModule/ChatModule.vue';
+import NewChatModule from './NewChatModule/App.vue';
 import FontSizeRow from './FontSizeRow/FontSizeRow.vue';
 export default {
-  components: { MenuRow, ChatModule, FontSizeRow },
+  components: { MenuRow, ChatModule, FontSizeRow, NewChatModule },
 };
 </script>

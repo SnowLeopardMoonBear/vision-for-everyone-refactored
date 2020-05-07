@@ -1,6 +1,6 @@
 <template>
   <div class="message-line">
-    <img class="kiwecon" src="../../../../public/kiwe_favicon.png" />
+    <img class="kiwecon" src="../../../../../../public/kiwe_favicon.png" />
     <p class="df-message">
       {{ msg.content }} <span class="time">{{ msg.time }}</span>
     </p>

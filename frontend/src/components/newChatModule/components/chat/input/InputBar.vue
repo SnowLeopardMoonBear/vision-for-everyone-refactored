@@ -26,16 +26,17 @@ export default {
       ${minutes > 9 ? `${minutes}` : `0${minutes}`}분`;
     },
     sendChime() {
-      var chime = new Audio(require('../../../../public/chime.mp3'));
+      var chime = new Audio(require('../../../../../../public/chime.mp3'));
       chime.play();
     },
     sendMessage() {
       if (this.inputText !== "") {
-        this.$store.commit("pushMessage", {
+        var msgToSend = {
           is_DF: false,
           content: this.inputText,
           time: this.getCurrentTime(),
-        });
+        }
+        this.$store.commit("pushMessage", msgToSend);
         this.inputText = "";
         this.sendChime();
         scrollToBottom();
