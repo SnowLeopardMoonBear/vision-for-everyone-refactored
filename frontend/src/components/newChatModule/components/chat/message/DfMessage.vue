@@ -21,7 +21,7 @@ export default {
   color: rgb(85, 85, 85);
   float: left;
   text-align: left;
-  width: 40%;
+  width: 50%;
   border-radius: 5px;
   background-color: rgb(255, 253, 112);
   margin-top: 5px;
