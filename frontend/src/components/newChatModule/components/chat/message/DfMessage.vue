@@ -30,7 +30,7 @@ export default {
   padding: 3px;
 }
 .df-message:after {
-  border-top: 10px solid rgb(255, 253, 112);
+  border-top: 10px solid rgb(252, 248, 55);
   border-left: 10px solid transparent;
   border-right: 0px solid transparent;
   border-bottom: 0px solid transparent;

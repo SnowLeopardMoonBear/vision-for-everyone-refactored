@@ -84,7 +84,7 @@ export default {
   align-items: center; */
   margin: 1%;
   float: center;
-  background-color: rgba(68, 240, 68, 0.795);
+  background-color: rgb(221, 252, 221);
   border-radius: 5px;
   vertical-align: bottom;
 }
