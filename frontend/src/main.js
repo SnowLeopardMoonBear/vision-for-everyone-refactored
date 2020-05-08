@@ -7,9 +7,10 @@ import vuetify from "./plugins/vuetify";
 
 // 백엔드 URL(3001번 포트)과 소켓을 만들어 연결.(client용 socket.io)
 var socket = io.connect("http://52.78.69.255:3001"); // AWS 인스턴스 고정IP로 확정
-
+var chime = new Audio(require("../public/chime.mp3"));
 // 소켓을 전역변수 등록해 모든 컴포넌트에서 $socket으로 접근 가능케 함.
 Vue.prototype.$socket = socket;
+Vue.prototype.$chime = chime;
 Vue.config.productionTip = false; // 프로덕션 설정
 
 // Vue 인스턴스를 export된 App.vue의 app에 마운트. 모든 Vue 컴포넌트의 뿌리가 되는 Vue 객체

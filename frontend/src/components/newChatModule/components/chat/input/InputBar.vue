@@ -39,8 +39,7 @@ export default {
       ${minutes > 9 ? `${minutes}` : `0${minutes}`}분`;
     },
     sendChime() {
-      var chime = new Audio(require("../../../../../../public/chime.mp3"));
-      chime.play();
+      this.$chime.play();
     },
     sendMessage() {
       if (this.inputText !== "") {
